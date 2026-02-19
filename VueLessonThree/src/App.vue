@@ -4,10 +4,10 @@ import ProfileHeader from "./components/ProfileHeader.vue";
 import HobbyInput from "./components/HobbyInput.vue";
 import HobbyList from "./components/HobbyList.vue";
 
-type Hobby = { id: number; name: string };
+type Hobby = { id: number; hobby: string };
 
-const name = ref("Michael");
-const age = ref(17);
+const name: string = ref("Michael");
+const age: number = ref(17);
 const hobbies = ref<Hobby[]>([]);
 let nextId = 1;
 
@@ -18,11 +18,11 @@ function addHobby(rawName: string) {
   if (!normalized) return;
 
   const isDuplicate = hobbies.value.some(
-    (h) => h.name.toLowerCase() === normalized.toLowerCase(),
+    (h) => h.hobby.toLowerCase() === normalized.toLowerCase(),
   );
   if (isDuplicate) return;
 
-  hobbies.value.push({ id: nextId++, name: normalized });
+  hobbies.value.push({ id: nextId++, hobby: normalized });
 }
 
 function removeHobby(id: number) {
